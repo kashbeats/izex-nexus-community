@@ -1,0 +1,12 @@
+{
+  "zabbix": {"url": "https://zabbix.example.invalid/api_jsonrpc.php"},
+  "servers": [{"id":"compute","name":"Compute host","role":"Hypervisor","address":"compute.example.invalid","note":"Host measurements; never sum with guest RAM.","items":{"cpu_percent":"100001","memory_used":"100002","memory_total":"100003"},"disks":[{"name":"VM pool","items":{"used":"100004","total":"100005"}}]}],
+  "checks":[{"name":"Example auth boundary","company":"Example","expected_status":401,"items":{"failed_step":"100006","http_code":"100007","response_seconds":"100008"}}],
+  "links":[],
+  "prometheus":{
+    "url":"https://prometheus.example.invalid",
+    "freshness_expression":"(up{job=\"knowledge-library\"} == 1) and on() (time()-izex_ai_snapshot_timestamp_seconds >= 0) and on() (time()-izex_ai_snapshot_timestamp_seconds < 120)",
+    "queries":{"worker":"izex_knowledge_worker_online","queued":"sum(izex_ai_jobs{status=\"queued\"})","active":"sum(izex_ai_jobs{status=\"processing\"})","done":"sum(izex_ai_outcomes_24h{outcome=\"done\"})","failed":"sum(izex_ai_outcomes_24h{outcome=\"failed\"})","web":"izex_ai_web_attempts_24h","sources":"izex_ai_web_usable_24h","diagnostics":"izex_ai_diagnostics_current"}
+  },
+  "archive_file": null
+}

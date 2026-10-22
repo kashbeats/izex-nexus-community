@@ -1,0 +1,13 @@
+apiVersion: 1
+# Demo does not need a datasource. This one is provided for the optional live edition.
+datasources:
+  - name: NEXUS Community Adapter
+    uid: nexus-community-json
+    type: yesoreyeram-infinity-datasource
+    access: proxy
+    jsonData:
+      auth_method: none
+      allowedHosts: [http://adapter:8096]
+      httpHeaderName1: Authorization
+    secureJsonData:
+      httpHeaderValue1: Bearer ${NEXUS_ADAPTER_TOKEN}

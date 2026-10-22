@@ -1,0 +1,10 @@
+if(!sourceCurrent('backups'))return unknown('Backup collector unavailable; no current recovery evidence.');
+text(18,14,'04 / RECOVERY EVIDENCE VAULT',11,C.blue);
+text(18,35,'ARCHIVE EXISTENCE ≠ SUCCESSFUL RESTORE',10,C.amber);
+const rows=S.readiness||[],rh=Math.min(66,(H-105)/Math.max(1,rows.length));
+rows.forEach((r,i)=>{const y=60+i*rh,valid=finite(r.timestamp)&&r.timestamp>0&&r.timestamp<=now,co=!valid?C.unknown:['recent','verified'].includes(r.state)?C.teal:C.amber;
+ rect(15,y,W-30,rh-7);text(28,y+10,r.name,12,C.text);text(W-28,y+10,age(r.timestamp)+' OLD',12,co,{textAlign:'right'});
+ text(28,y+31,(valid?r.state.toUpperCase():'UNKNOWN CLOCK')+' / '+(r.name.includes('VM')?'MANUAL FULL VM ARCHIVE':'APPLICATION ARCHIVE'),9,C.muted);
+});
+text(18,H-23,'RESTORE VALIDATION: NOT PERFORMED  /  ARCHIVE STATE DOES NOT CHANGE BACKUP POLICY',9,C.amber);
+return base();

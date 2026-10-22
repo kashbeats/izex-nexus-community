@@ -1,0 +1,33 @@
+services:
+  grafana:
+    build: .
+    ports: ["127.0.0.1:3300:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      NEXUS_ADAPTER_TOKEN: ${NEXUS_ADAPTER_TOKEN:-}
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./dist:/etc/grafana/dashboards:ro
+      - ./provisioning:/etc/grafana/provisioning:ro
+    mem_limit: 512m
+    cpus: 0.75
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+  adapter:
+    profiles: [live]
+    build: ./adapter
+    environment:
+      NEXUS_ZABBIX_TOKEN: ${NEXUS_ZABBIX_TOKEN:-}
+      NEXUS_PROMETHEUS_TOKEN: ${NEXUS_PROMETHEUS_TOKEN:-}
+      NEXUS_ADAPTER_TOKEN: ${NEXUS_ADAPTER_TOKEN:-}
+    volumes: ["./adapter/config.json:/config/config.json:ro"]
+    read_only: true
+    mem_limit: 128m
+    cpus: 0.25
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+volumes:
+  grafana-data:

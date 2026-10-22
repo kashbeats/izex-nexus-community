@@ -1,0 +1,342 @@
+{
+  "version": 1,
+  "checked_at": 1767225600,
+  "stale": false,
+  "coverage": {
+    "zabbix": {
+      "ok": true,
+      "complete": true
+    },
+    "prometheus": {
+      "ok": true,
+      "complete": true
+    },
+    "backups": {
+      "ok": true,
+      "complete": true
+    }
+  },
+  "summary": {
+    "open": 1,
+    "unknown": 0,
+    "restore_validated": false
+  },
+  "servers": {
+    "servers": [
+      {
+        "id": "compute",
+        "name": "Compute host",
+        "role": "Virtualization",
+        "address": "host-compute.example.invalid",
+        "source": "Fictional sample fixture",
+        "note": "SYNTHETIC: illustrative resource values, not an observation.",
+        "metrics": {
+          "cpu_percent": {
+            "value": 24,
+            "checked_at": 1767225600
+          },
+          "memory_used": {
+            "value": 12884901888,
+            "checked_at": 1767225600
+          },
+          "memory_total": {
+            "value": 34359738368,
+            "checked_at": 1767225600
+          },
+          "disk_used": {
+            "value": 193273528320,
+            "checked_at": 1767225600
+          },
+          "disk_total": {
+            "value": 536870912000,
+            "checked_at": 1767225600
+          }
+        },
+        "disks": [
+          {
+            "name": "VM pool",
+            "used": 193273528320,
+            "total": 536870912000,
+            "checked_at": 1767225600
+          },
+          {
+            "name": "Archive pool",
+            "used": 257698037760,
+            "total": 1073741824000,
+            "checked_at": 1767225600
+          }
+        ]
+      },
+      {
+        "id": "linux",
+        "name": "Linux guest",
+        "role": "Applications",
+        "address": "host-linux.example.invalid",
+        "source": "Fictional sample fixture",
+        "note": "SYNTHETIC: illustrative resource values, not an observation.",
+        "metrics": {
+          "cpu_percent": {
+            "value": 36,
+            "checked_at": 1767225600
+          },
+          "memory_used": {
+            "value": 5368709120,
+            "checked_at": 1767225600
+          },
+          "memory_total": {
+            "value": 8589934592,
+            "checked_at": 1767225600
+          },
+          "disk_used": {
+            "value": 26843545600,
+            "checked_at": 1767225600
+          },
+          "disk_total": {
+            "value": 85899345920,
+            "checked_at": 1767225600
+          }
+        },
+        "disks": []
+      },
+      {
+        "id": "containers",
+        "name": "Container host",
+        "role": "Monitoring",
+        "address": "host-containers.example.invalid",
+        "source": "Fictional sample fixture",
+        "note": "SYNTHETIC: illustrative resource values, not an observation.",
+        "metrics": {
+          "cpu_percent": {
+            "value": 14,
+            "checked_at": 1767225600
+          },
+          "memory_used": {
+            "value": 3221225472,
+            "checked_at": 1767225600
+          },
+          "memory_total": {
+            "value": 8589934592,
+            "checked_at": 1767225600
+          },
+          "disk_used": {
+            "value": 19327352832,
+            "checked_at": 1767225600
+          },
+          "disk_total": {
+            "value": 85899345920,
+            "checked_at": 1767225600
+          }
+        },
+        "disks": []
+      },
+      {
+        "id": "lab",
+        "name": "Test VM",
+        "role": "Isolated experiment",
+        "address": "host-lab.example.invalid",
+        "source": "Fictional sample fixture",
+        "note": "SYNTHETIC: illustrative resource values, not an observation.",
+        "metrics": {
+          "cpu_percent": {
+            "value": 4,
+            "checked_at": 1767225600
+          },
+          "memory_used": {
+            "value": 1073741824,
+            "checked_at": 1767225600
+          },
+          "memory_total": {
+            "value": 4294967296,
+            "checked_at": 1767225600
+          },
+          "disk_used": {
+            "value": 8589934592,
+            "checked_at": 1767225600
+          },
+          "disk_total": {
+            "value": 34359738368,
+            "checked_at": 1767225600
+          }
+        },
+        "disks": []
+      },
+      {
+        "id": "ai",
+        "name": "AI workstation",
+        "role": "Local inference",
+        "address": "host-ai.example.invalid",
+        "source": "Fictional sample fixture",
+        "note": "SYNTHETIC: illustrative resource values, not an observation.",
+        "metrics": {
+          "cpu_percent": {
+            "value": 58,
+            "checked_at": 1767225600
+          },
+          "memory_used": {
+            "value": 10737418240,
+            "checked_at": 1767225600
+          },
+          "memory_total": {
+            "value": 17179869184,
+            "checked_at": 1767225600
+          },
+          "disk_used": {
+            "value": 96636764160,
+            "checked_at": 1767225600
+          },
+          "disk_total": {
+            "value": 274877906944,
+            "checked_at": 1767225600
+          }
+        },
+        "disks": []
+      }
+    ]
+  },
+  "business": {
+    "checks": [
+      {
+        "name": "Example A / Homepage",
+        "company": "Example A",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 200,
+        "expected_status": 200,
+        "response_seconds": 0.12
+      },
+      {
+        "name": "Example A / Services",
+        "company": "Example A",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 200,
+        "expected_status": 200,
+        "response_seconds": 0.147
+      },
+      {
+        "name": "Example A / Login",
+        "company": "Example A",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 200,
+        "expected_status": 200,
+        "response_seconds": 0.174
+      },
+      {
+        "name": "Example A / Health",
+        "company": "Example A",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 200,
+        "expected_status": 200,
+        "response_seconds": 0.201
+      },
+      {
+        "name": "Example A / Auth boundary",
+        "company": "Example A",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 401,
+        "expected_status": 401,
+        "response_seconds": 0.22799999999999998
+      },
+      {
+        "name": "Example B / Homepage",
+        "company": "Example B",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 200,
+        "expected_status": 200,
+        "response_seconds": 0.255
+      },
+      {
+        "name": "Example B / Services",
+        "company": "Example B",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 200,
+        "expected_status": 200,
+        "response_seconds": 0.28200000000000003
+      },
+      {
+        "name": "Example B / Login",
+        "company": "Example B",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 200,
+        "expected_status": 200,
+        "response_seconds": 0.309
+      },
+      {
+        "name": "Example B / Health",
+        "company": "Example B",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 200,
+        "expected_status": 200,
+        "response_seconds": 0.33599999999999997
+      },
+      {
+        "name": "Example B / Auth boundary",
+        "company": "Example B",
+        "checked_at": 1767225600,
+        "state": "passing",
+        "http_code": 401,
+        "expected_status": 401,
+        "response_seconds": 0.363
+      }
+    ]
+  },
+  "ai": {
+    "checked_at": 1767225600,
+    "worker": 1,
+    "queued": 3,
+    "active": 1,
+    "done": 27,
+    "failed": 2,
+    "web": 8,
+    "sources": 6,
+    "diagnostics": 1
+  },
+  "readiness": [
+    {
+      "name": "Example VM archive",
+      "state": "recent",
+      "timestamp": 1767139200
+    },
+    {
+      "name": "Example application archive",
+      "state": "verified",
+      "timestamp": 1767218400
+    }
+  ],
+  "incidents": [
+    {
+      "id": "DEMO-001",
+      "status": "open",
+      "severity": "warning",
+      "title": "Fictional queue capacity review",
+      "test": false
+    }
+  ],
+  "topology": {
+    "links": [
+      [
+        "compute",
+        "linux"
+      ],
+      [
+        "compute",
+        "containers"
+      ],
+      [
+        "compute",
+        "lab"
+      ],
+      [
+        "linux",
+        "ai"
+      ]
+    ]
+  }
+}

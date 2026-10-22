@@ -1,0 +1,12 @@
+if(!sourceCurrent('zabbix'))return unknown('Business observations require current Zabbix coverage.');
+text(18,14,'02 / BUSINESS SERVICE FABRIC',11,C.blue);
+text(18,35,'PUBLIC HTTP + DB READINESS + AUTH BOUNDARIES',9,C.muted);
+const checks=(S.business?.checks||[]).slice(0,24),cols=W>650?4:3,rows=Math.ceil(checks.length/cols),cw=(W-30)/cols,ch=Math.min(82,(H-100)/Math.max(1,rows));
+checks.forEach((c,i)=>{const x=15+(i%cols)*cw,y=62+Math.floor(i/cols)*ch,known=fresh(c.checked_at),state=known?c.state:'unknown',co=state==='passing'?C.teal:state==='failing'?C.red:C.unknown;
+ rect(x+2,y+2,cw-6,ch-6,C.panel,co,7);
+ text(x+11,y+11,String(c.name||'Unnamed check'),9,C.text,{width:cw-22,overflow:'truncate'});
+ text(x+11,y+30,known&&finite(c.response_seconds)?Math.round(c.response_seconds*1000)+' ms':'UNKNOWN',16,co);
+ text(x+11,y+ch-20,known?`${c.http_code??'?'} / EXPECT ${c.expected_status??'?'}`:'STALE SAMPLE',8,C.muted);
+});
+text(18,H-24,'Expected 401 can PASS. Private transactions and mail delivery remain untested.',9,C.muted);
+return base();

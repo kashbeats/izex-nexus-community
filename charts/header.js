@@ -1,0 +1,14 @@
+const pad=20;
+text(pad,10,'IZEX SOLUTIONS  /  OBSERVABILITY ENGINEERING',11,C.blue);
+text(pad,30,'N E X U S',Math.min(36,W/24),C.text);
+text(Math.max(245,W*.31),37,'INFRASTRUCTURE × BUSINESS × LOCAL AI',12,C.muted);
+const label=live?(NEXUS_DEMO?'DEMO / FICTIONAL DATA':'CURRENT EVIDENCE'):'STALE / UNKNOWN';
+text(W-260,24,label,11,NEXUS_DEMO?C.amber:live?C.teal:C.amber);
+text(W-260,45,S.checked_at?new Date(S.checked_at*1000).toLocaleTimeString():'NO SNAPSHOT',12,C.muted);
+line(20,75,W-20,75);
+const active=(S.incidents||[]).filter(i=>!i.test&&!['resolved'].includes(i.status));
+const checks=S.business?.checks||[];
+const pass=sourceCurrent('zabbix')?checks.filter(c=>fresh(c.checked_at)&&c.state==='passing').length:null;
+const counts=[['MONITORING FEEDS',live?Object.values(S.coverage||{}).filter(c=>c.ok&&c.complete).length+'/'+Object.keys(S.coverage||{}).length:'—',C.blue],['PUBLIC CHECKS PASS',pass===null?'—':pass+'/'+checks.length,C.teal],['OPEN INCIDENTS',live?S.summary?.open??'—':'—',live&&S.summary?.open>0?C.amber:C.teal],['RESTORE PROOF','NOT TESTED',C.amber]];
+counts.forEach(([n,v,c],i)=>{let x=pad+i*(W-40)/4;text(x,87,n,10,C.muted);text(x,106,v,22,c);});
+return base();

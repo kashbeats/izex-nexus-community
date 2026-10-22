@@ -1,0 +1,12 @@
+const keys=['worker','queued','active','done','failed','web','sources','diagnostics'];
+const values=Object.fromEntries(keys.map(k=>[k,live&&sourceCurrent('prometheus')&&fresh(S.ai?.checked_at,120)&&finite(S.ai?.[k])?S.ai[k]:null]));
+text(18,14,'03 / LOCAL INTELLIGENCE PIPELINE',11,C.purple);text(18,35,'NORMALIZED JOB METRICS · UNKNOWN WHEN NOT CONFIGURED',9,C.muted);
+const stages=[['QUEUED',values.queued,C.blue],['PROCESSING',values.active,C.purple],['DONE / 24H',values.done,C.teal],['FAILED / 24H',values.failed,C.amber]],cw=(W-32)/4;
+stages.forEach(([label,value,co],i)=>{const x=16+i*cw;rect(x,70,cw-8,103);text(x+12,84,label,9,C.muted);text(x+12,108,value===null?'—':String(value),30,value===null?C.unknown:co);if(i<3)text(x+cw-3,113,'›',18,C.line);});
+const badge=values.worker===null?'WORKER UNKNOWN':values.worker===1?'WORKER ONLINE':'WORKER OFFLINE';text(20,197,badge,12,values.worker===1?C.teal:C.amber);
+text(20,225,'RESEARCH / LAST 24 HOURS',10,C.muted);
+text(20,246,(values.sources??'—')+' WITH SOURCES  /  '+(values.web??'—')+' ATTEMPTS',18,C.blue);
+text(20,280,values.diagnostics===null?'DIAGNOSTICS UNKNOWN':values.diagnostics===1?'DIAGNOSTIC SNAPSHOT CURRENT':'DIAGNOSTICS STALE / UNKNOWN',11,values.diagnostics===1?C.teal:C.amber);
+text(20,H-37,'No fake token stream or hidden chain-of-thought. Activity is observed job state.',9,C.muted);
+text(20,H-21,'24h values are retained-record gauges. Citations do not prove correctness.',9,C.muted);
+return base();
